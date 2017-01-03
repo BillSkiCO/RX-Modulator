@@ -27,7 +27,7 @@ It means that with the right computer algorithms, I can hack you back in time. J
 
 - GUI with references to the hit kickstarter movie [KUNG FURY](https://youtu.be/bS5P_LAqiVg?t=9m53s)
 - Written in uncomplicated bash
-- No installation necessary - just fork, clone, and [run](https://github.com/BillSkiCO/RX-Modulator#how-to-run).
+- Fork, clone, and [run](https://github.com/BillSkiCO/RX-Modulator#how-to-run).
 - Stupidly [easy to use](https://github.com/BillSkiCO/RX-Modulator#basic-usage)
 - Works on Mac and Linux (maybe on new windows 10?)
 
@@ -52,6 +52,15 @@ $ cd RX-Modulator/
 $ sudo bash timehack
 ```
 
+#### Note
+On *nix systems other than Linux it's fairly common for the GNU flavor of utilities to be installed prefixed with a ```g```
+You may have to change ```date``` to ```gdate``` in the source code to get it working
+
+TO TEST THIS:
+See if you get any errors typing in 
+```bash
+$ date
+```
 ### Basic usage
 
 ```bash
