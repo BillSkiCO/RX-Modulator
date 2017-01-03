@@ -49,7 +49,20 @@ $ sudo bash timehack    # must run sudo to make sure your git is configured corr
 ```
 - To move around the GUI simply use the arrow keys or click with the mouse.
 - Press enter to submit forms.
-
+- The prompt at the end for your username and password comes from git push. Not me!
+```bash
+$ You are about to hack time are you sure?
+$ dialog --backtitle "GitHub Time Hacker" \
+$	--title "WARNING" \
+$	--yesno "\nYOU'RE ABOUT\nTO HACK TIME,\nARE YOU SURE?" 10 30
+$       
+$ yn_response=$?
+$ case $yn_response in
+$ 	0) git push --quiet;;
+$	1) echo "Aborted";;
+$	255) echo "Aborted";;
+$ esac
+```
 ## Contributing
 
 #### Bug Reports & Feature Requests
