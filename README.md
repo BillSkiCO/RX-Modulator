@@ -27,15 +27,24 @@ It means that with the right computer algorithms, I can hack you back in time. J
 
 - GUI with references to the hit kickstarter movie [KUNG FURY](https://youtu.be/bS5P_LAqiVg?t=9m53s)
 - Written in uncomplicated bash
-- Fork, clone, and [run](https://github.com/BillSkiCO/RX-Modulator#how-to-run).
+- Create a personal repo, copy source, paste and [run](https://github.com/BillSkiCO/RX-Modulator#how-to-run).
 - Stupidly [easy to use](https://github.com/BillSkiCO/RX-Modulator#basic-usage)
 - Works on Mac and Linux (maybe on new windows 10?)
 
-### How to run
+## How to run
 #### Step 1
-- [Fork the repo](https://www.youtube.com/watch?v=f5grYMXbAV0)
+- Create new repo
+```
+Commits will only show up if:
+The commits were made in a standalone repository, not a fork.
+```
+Thanks @michaeltangelo
 
 #### Step 2
+- Copy script into a new file in that repository
+- Name it timehack for consistancy
+
+#### Step 3
 Make sure you have cURL, dialog, and git installed on your system
 
 ```bash
@@ -45,10 +54,12 @@ $ sudo apt-get install dialog
 $ sudo apt-get install git
 ```
 
-#### Step 3
+#### Step 4
+Clone your new repository to your computer if new repo was created on github
+
 ```bash
-$ git clone https://github.com/your-username/RX-Modulator.git
-$ cd RX-Modulator/
+$ git clone https://github.com/Your-Username/Repo-Name.git
+$ cd ~/your-repo-name/
 $ sudo bash timehack
 ```
 
