@@ -189,7 +189,7 @@ dialog --backtitle "GitHub Time Hacker" \
        
 yn_response=$?
 case $yn_response in
-	0) git push --quiet;;
+	0) git push;;
 	1) echo "Aborted";;
 	255) echo "Aborted";;
 esac
