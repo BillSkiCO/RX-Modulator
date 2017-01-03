@@ -36,6 +36,16 @@ It means that with the right computer algorithms, I can hack you back in time. J
 - [Fork the repo](https://www.youtube.com/watch?v=f5grYMXbAV0)
 
 #### Step 2
+Make sure you have cURL, dialog, and git installed on your system
+
+```bash
+$ sudo apt-get update
+$ sudo apt-get install curl
+$ sudo apt-get install dialog
+$ sudo apt-get install git
+```
+
+#### Step 3
 ```bash
 $ git clone https://github.com/your-username/RX-Modulator.git
 $ cd RX-Modulator/
