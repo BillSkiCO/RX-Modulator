@@ -72,6 +72,13 @@ See if you get any errors typing in
 ```bash
 $ date
 ```
+If date errors arise, FEAR NOT! Just install gdate with homebrew using 
+
+```bash
+$ brew install coreutils
+```
+You will still have to change ```date``` to ```gdate``` after this
+
 ### Basic usage
 
 ```bash
