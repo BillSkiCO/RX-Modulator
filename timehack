@@ -105,7 +105,7 @@ date_picked=$(dialog --stdout --title "TIME PORTAL" \
 		--no-cancel \
 		--date-format '%Y%m%d' \
 		--calendar "\nSelect a date to hack\nback in time to:" \
-		0 0 $todays_date)
+		0 0)
                  
 if [ "$date_picked" != "" ]; then
 	d1=$(date -d "00:00" +%s)
