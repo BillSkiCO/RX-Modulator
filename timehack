@@ -43,6 +43,17 @@ fi
 
 ###############################################################################
 
+# Get OS
+export platform='unknown'
+export system_name=`uname`
+if [[ "$system_name" == 'Linux' ]]; then
+	platform='linux'
+elif [[ "$system_name" == 'Darwin' ]]; then
+	platform='osx'
+fi
+
+###############################################################################
+
 # Load Complete
 dialog --backtitle "GitHub Time Hacker" --infobox "LOAD COMPLETE." 3 20
 sleep 1.25
@@ -99,7 +110,7 @@ sleep .9
 
 ###############################################################################
 
-# Calender & Commit
+# Calender input
 date_picked=$(dialog --stdout --title "TIME PORTAL" \
 		--backtitle "GitHub Time Hacker" \
 		--no-cancel \
@@ -108,33 +119,60 @@ date_picked=$(dialog --stdout --title "TIME PORTAL" \
 		0 0)
                  
 if [ "$date_picked" != "" ]; then
-	d1=$(date -d "00:00" +%s)
-	d2=$(date -d $date_picked +%s)
+
+    if [ "$platform" = "linux" ]; then
+		d1=$(date -d "00:00" +%s)
+		d2=$(date -d $date_picked +%s)
+	elif [ "$platform" = "osx" ]; then
+		d1=$(date -j -f "%a %b %d %T %Z %Y" "`date`" "+%s")
+		d2=$(date -j -f "%Y%m%d" "$date_picked" "+%s")
+	else
+		d1=$(date -d "00:00" +%s)
+		d2=$(date -d $date_picked +%s)
+	fi
+	
 	days_diff=$(( ($d1-$d2) / 86400 ))
+
 else
     echo
     echo "Aborted"
 	exit
 fi
 
+###############################################################################
+
+# Committing
 daysHacked=0
 until [ "$daysHacked" -eq "$days_diff" ]
 do
 	FLIP=$(($RANDOM%10))
 	
-	if [ $FLIP -ge 2 ]; then 
-	d=$(date -d "$date_picked + $daysHacked days" +%b" "%d" 00:00 "%Y)
+	if [ $FLIP -ge 2 ]; then
+		if [ "$platform" = "linux" ]; then
+    d=$(date -d "$date_picked + $daysHacked days" +%b" "%d" 00:00 "%Y)
+
+		elif [ "$platform" = "osx" ]; then
+	d=$(date -j -f "%a %b %d %T %Z %Y" "`date -v +"$daysHacked""d"`" \
+	"+%b %d 00:00 %Y")
+
+		else
+	    d=$(date -d "$date_picked + $daysHacked days" +%b" "%d" 00:00 "%Y)
+	fi
 	git commit --quiet --allow-empty --date="$d" -m "Hacked Time"
-		if [ $FLIP -ge 4 ]; then 
+	
+	if [ $FLIP -ge 4 ]; then 
 	git commit --quiet --allow-empty --date="$d" -m "Hacked Time 2x"
 	git commit --quiet --allow-empty --date="$d" -m "Hacked Time 2x"
+	
 			if [ $FLIP -ge 8 ]; then
 	git commit --quiet --allow-empty --date="$d" -m "Hacked Time 3x"
 	git commit --quiet --allow-empty --date="$d" -m "Hacked Time 3x"
 	git commit --quiet --allow-empty --date="$d" -m "Hacked Time 3x"
+	
 				if [ $FLIP = 9 ]; then 
 	git commit --quiet --allow-empty --date="$d" -m "Hacked Time 4x"
 	git commit --quiet --allow-empty --date="$d" -m "Hacked Time 4x"
+
 				fi
 			fi
 		fi
