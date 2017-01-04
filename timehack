@@ -149,14 +149,14 @@ do
 	
 	if [ $FLIP -ge 2 ]; then
 		if [ "$platform" = "linux" ]; then
-    d=$(date -d "$date_picked + $daysHacked days" +%b" "%d" 00:00 "%Y)
+    	d=$(date -d "$date_picked + $daysHacked days" +%b" "%d" 00:00 "%Y)
 
 		elif [ "$platform" = "osx" ]; then
 	d=$(date -j -f "%a %b %d %T %Z %Y" "`date -v +"$daysHacked""d"`" \
 	"+%b %d 00:00 %Y")
 
 		else
-	    d=$(date -d "$date_picked + $daysHacked days" +%b" "%d" 00:00 "%Y)
+	d=$(date -d "$date_picked + $daysHacked days" +%b" "%d" 00:00 "%Y)
 	fi
 	git commit --quiet --allow-empty --date="$d" -m "Hacked Time"
 	
