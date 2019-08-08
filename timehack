@@ -152,7 +152,7 @@ do
     	d=$(date -d "$date_picked + $daysHacked days" +%b" "%d" 00:00 "%Y)
 
 		elif [ "$platform" = "osx" ]; then
-	d=$(date -j -f "%a %b %d %T %Z %Y" "`date -v +"$daysHacked""d"`" \
+	d=$(date -j -f "%a %b %d %T %Z %Y" "`date -v -"$daysHacked""d"`" \
 	"+%b %d 00:00 %Y")
 
 		else
